@@ -20,7 +20,13 @@ from langchain import hub
 from langgraph.prebuilt import create_react_agent
 from langchain_core.callbacks import StdOutCallbackHandler
 from langchain_openai import ChatOpenAI
-OPENAI_API_KEY = "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"
+from dotenv import load_dotenv
+load_dotenv()
+os.environ["OPENAI_API_KEY"] = os.getenv('OPENAI_API_KEY')
+
+print(os.environ["OPENAI_API_KEY"])
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+
 
 def query_to_dataframe(query_result, db, query):
     """Convert database query result to pandas DataFrame with column names."""
